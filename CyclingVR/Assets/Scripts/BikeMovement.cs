@@ -9,7 +9,7 @@ public class BikeMovement : MonoBehaviour
 {
     public SteamVR_Action_Vector2 input;
     private CharacterController characterController;
-    public float speed = 10f;
+    private float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +20,16 @@ public class BikeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovePlayer();
+    }
+
+    public void MovePlayer()
+    {
         if (input.axis.magnitude >= 0.1f)
         {
             Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(input.axis.x, 0, input.axis.y));
-            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up) - new Vector3(0, 9.81f, 0) * Time.deltaTime);
+            //transform.position = speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up);
+            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up));
         }
-
     }
 }

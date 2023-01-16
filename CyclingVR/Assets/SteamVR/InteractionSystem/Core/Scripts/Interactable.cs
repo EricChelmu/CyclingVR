@@ -258,6 +258,7 @@ namespace Valve.VR.InteractionSystem
                 CreateHighlightRenderers();
                 UpdateHighlightRenderers();
             }
+
         }
 
 
