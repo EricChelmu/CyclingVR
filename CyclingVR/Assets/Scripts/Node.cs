@@ -6,11 +6,12 @@ public class Node : MonoBehaviour
 {
     [SerializeField]
     private List<Node> nodes;
+    public bool isCheck = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

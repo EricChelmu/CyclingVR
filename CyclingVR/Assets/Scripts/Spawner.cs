@@ -6,10 +6,12 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField]
     private Traffic[] trafficParticipant;
-
+    private Traffic newParticipant;
     [SerializeField]
     private bool IsSpawner = false;
+    public bool firstVehicleStopped = false;
     private int randomParticipant;
+    public List<Traffic> newTrafficParticipantList = new List<Traffic>();
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class Spawner : MonoBehaviour
     }
     void Update()
     {
-           randomParticipant = Random.Range(0, 2);
+           randomParticipant = Random.Range(0, 3);
     }
 
     IEnumerator SpawnAtIntervals()
@@ -34,7 +36,8 @@ public class Spawner : MonoBehaviour
     }
     void Spawn()
     {
-        Traffic newParticipant = Instantiate(trafficParticipant[randomParticipant], transform.position, Quaternion.identity);
+        newParticipant = Instantiate(trafficParticipant[randomParticipant], transform.position, Quaternion.identity);
+        newTrafficParticipantList.Add(newParticipant);
         Node currentNode = GetComponent<Node>();
         newParticipant.targetNode = currentNode.PickNextNode();
     }
