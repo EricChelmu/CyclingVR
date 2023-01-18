@@ -16,12 +16,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SetVehicleStopped(bool val)
-    {
-        Debug.Log($"new value {val}");
-        firstVehicleStopped = val;
-    }
-
     // Update is called once per frame
     void Update()
     {

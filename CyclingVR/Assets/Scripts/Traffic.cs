@@ -25,16 +25,11 @@ public class Traffic : MonoBehaviour
             transform.position = transform.position;
             GameManager.Instance.firstVehicleStopped = true;
         }
-        if (GameManager.Instance.firstVehicleStopped)
-        {
-            for (int i = 0; i < spawner.newTrafficParticipantList.Count; i++)
-                spawner.newTrafficParticipantList[i].transform.position = transform.position;
-        }
         if (Vector3.Distance(transform.position, targetNode.transform.position) == 0 && !targetNode.isCheck)
         {
             targetNode = targetNode.PickNextNode();
         }
-        if (!targetNode && !targetNode.isCheck)
+        if (!targetNode)
         {
             Destroy(gameObject);
         }

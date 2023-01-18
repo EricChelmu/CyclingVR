@@ -8,18 +8,6 @@ public class Node : MonoBehaviour
     private List<Node> nodes;
     public bool isCheck = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public Node PickNextNode()
     {
         if (nodes.Count != 0)
