@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CheckerNode
+  - CheckerNode2
   layers:
   - Default
   - TransparentFX

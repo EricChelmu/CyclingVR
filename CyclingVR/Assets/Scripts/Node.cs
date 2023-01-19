@@ -6,7 +6,8 @@ public class Node : MonoBehaviour
 {
     [SerializeField]
     private List<Node> nodes;
-    public bool isCheck = false;
+    public bool isStopSign = false;
+    public bool isPrioritySign = false;
 
     public Node PickNextNode()
     {
