@@ -10,21 +10,4 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    public void SetVehicleStopped(bool val)
-    {
-        Debug.Log($"new value {val}");
-        firstVehicleStopped = val;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
