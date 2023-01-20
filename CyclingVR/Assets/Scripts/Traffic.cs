@@ -19,7 +19,7 @@ public class Traffic : MonoBehaviour
     {
         //direction = targetNode.transform.position - transform.position;
         //transform.LookAt(targetNode.transform.position);
-        if (!GameManager.Instance.firstVehicleStopped)
+        if (!targetNode.isStopSign)
         {
             //transform.LookAt(targetPosition);
 
@@ -42,12 +42,12 @@ public class Traffic : MonoBehaviour
             //    transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, 0.01f);
             //}
         }
-        if (targetNode.isStopSign || GameManager.Instance.firstVehicleStopped)
-        {
+        //if (targetNode.isStopSign)
+        //{
 
-            rb.velocity = Vector3.zero;
-            GameManager.Instance.firstVehicleStopped = true;
-        }
+        //    rb.velocity = Vector3.zero;
+        //    GameManager.Instance.firstVehicleStopped = true;
+        //}
         if (Vector3.Distance(transform.position, targetNode.transform.position) <= 1.5 && !targetNode.isStopSign)
         {
             targetNode = targetNode.PickNextNode();
