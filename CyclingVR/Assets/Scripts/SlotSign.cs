@@ -23,7 +23,6 @@ public class SlotSign : MonoBehaviour
             Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
             CheckerNodeScript.isPrioritySign = true;
             CheckerNodeScript.isStopSign = false;
-            GameManager.Instance.firstVehicleStopped = false;
         }
     }
 }

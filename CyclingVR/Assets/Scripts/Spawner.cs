@@ -36,15 +36,15 @@ public class Spawner : MonoBehaviour
     }
     void Spawn()
     {
-        //GameObject CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode");
-        //Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
-        //if (CheckerNodeScript.isPrioritySign == true)
-        //{
-
-        //}
-        newParticipant = Instantiate(trafficParticipant[randomParticipant], transform.position, Quaternion.identity);
-        newTrafficParticipantList.Add(newParticipant);
-        Node currentNode = GetComponent<Node>();
-        newParticipant.targetNode = currentNode.PickNextNode();
+        GameObject CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode");
+        Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
+        if (!CheckerNodeScript.isStopSign)
+        {
+            newParticipant = Instantiate(trafficParticipant[randomParticipant], transform.position, Quaternion.identity);
+            newTrafficParticipantList.Add(newParticipant);
+            Node currentNode = GetComponent<Node>();
+            newParticipant.targetNode = currentNode.PickNextNode();
+        }
+        
     }
 }
