@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner2 : MonoBehaviour
 {
     [SerializeField]
     private Traffic[] trafficParticipant;
     private Traffic newParticipant;
     [SerializeField]
     private bool IsSpawner = false;
-    public bool firstVehicleStopped = false;
+    public bool firstVehicleStopped2 = false;
     private int randomParticipant;
     private List<Traffic> newTrafficParticipantList = new List<Traffic>();
+    private float timer = 0;
+    private GameObject CheckerNodeObject;
+    private Node CheckerNodeScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode2");
+        CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
         if (IsSpawner)
         {
             StartCoroutine(SpawnAtIntervals());
@@ -23,9 +28,16 @@ public class Spawner : MonoBehaviour
     }
     void Update()
     {
-           randomParticipant = Random.Range(0, 3);
+        Debug.Log(timer);
+        randomParticipant = Random.Range(0, 2);
+        if (timer <= 9.5)
+            timer += Time.deltaTime;
+        if (timer >= 9.5 && timer != 10)
+        {
+            CheckerNodeScript.isStopSign = true;
+            timer = 10;
+        }
     }
-
     IEnumerator SpawnAtIntervals()
     {
         while (true)
@@ -36,8 +48,6 @@ public class Spawner : MonoBehaviour
     }
     void Spawn()
     {
-        GameObject CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode");
-        Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
         if (!CheckerNodeScript.isStopSign)
         {
             newParticipant = Instantiate(trafficParticipant[randomParticipant], transform.position, Quaternion.identity);
@@ -45,6 +55,6 @@ public class Spawner : MonoBehaviour
             Node currentNode = GetComponent<Node>();
             newParticipant.targetNode = currentNode.PickNextNode();
         }
-        
+
     }
 }

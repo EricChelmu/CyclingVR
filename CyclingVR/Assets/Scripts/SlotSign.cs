@@ -8,7 +8,7 @@ public class SlotSign : MonoBehaviour
     {
         if (other.gameObject.name == "Stop Sign")
         {
-            other.transform.position = new Vector3(-7.96f, -2.59f, -55.44f);
+            other.transform.position = new Vector3(-15.89375f, -2.87f, -55.78f);
             other.transform.rotation = new Quaternion(0, 90, 0, 0);
             GameObject CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode");
             Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
@@ -17,7 +17,7 @@ public class SlotSign : MonoBehaviour
         }
         if (other.gameObject.name == "Priority Sign")
         {
-            other.transform.position = new Vector3(-7.96f, -2.59f, -55.44f);
+            other.transform.position = new Vector3(-15.89375f, -2.87f, -55.78f);
             other.transform.rotation = new Quaternion(0, 90, 0, 0);
             GameObject CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode");
             Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
