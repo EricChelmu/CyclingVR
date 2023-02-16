@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Spawner2 : MonoBehaviour
 {
-    [SerializeField]
-    private Traffic[] trafficParticipant;
+    [SerializeField] private Traffic[] trafficParticipant;
     private Traffic newParticipant;
-    [SerializeField]
-    private bool IsSpawner = false;
+    [SerializeField] private bool IsSpawner = false;
     public bool firstVehicleStopped2 = false;
     private int randomParticipant;
     private List<Traffic> newTrafficParticipantList = new List<Traffic>();
@@ -26,13 +24,13 @@ public class Spawner2 : MonoBehaviour
             StartCoroutine(SpawnAtIntervals());
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         Debug.Log(timer);
         randomParticipant = Random.Range(0, 2);
-        if (timer <= 9.5)
+        if (timer <= 6.5)
             timer += Time.deltaTime;
-        if (timer >= 9.5 && timer != 10)
+        if (timer >= 6.5 && timer != 10)
         {
             CheckerNodeScript.isStopSign = true;
             timer = 10;

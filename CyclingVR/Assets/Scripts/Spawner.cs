@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField]
-    private Traffic[] trafficParticipant;
+    [SerializeField] private Traffic[] trafficParticipant;
     private Traffic newParticipant;
-    [SerializeField]
-    private bool IsSpawner = false;
+    [SerializeField] private bool IsSpawner = false;
     public bool firstVehicleStopped = false;
     private int randomParticipant;
     private List<Traffic> newTrafficParticipantList = new List<Traffic>();
@@ -21,7 +19,7 @@ public class Spawner : MonoBehaviour
             StartCoroutine(SpawnAtIntervals());
         }
     }
-    void Update()
+    void FixedUpdate()
     {
            randomParticipant = Random.Range(0, 3);
     }
@@ -36,8 +34,10 @@ public class Spawner : MonoBehaviour
     }
     void Spawn()
     {
+        //Find the node that checks for signs
         GameObject CheckerNodeObject = GameObject.FindGameObjectWithTag("CheckerNode");
         Node CheckerNodeScript = CheckerNodeObject.GetComponent<Node>();
+        //The traffic will only spawn if the checker node is not a stop sign, to prevent stacking of cars at the beginning of the road
         if (!CheckerNodeScript.isStopSign)
         {
             newParticipant = Instantiate(trafficParticipant[randomParticipant], transform.position, Quaternion.identity);

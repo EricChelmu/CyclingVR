@@ -6,6 +6,7 @@ public class SlotSign : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
+        //Check which sign is triggering the collision
         if (other.gameObject.name == "Stop Sign")
         {
             other.transform.position = new Vector3(-15.89375f, -2.87f, -55.78f);
@@ -15,6 +16,7 @@ public class SlotSign : MonoBehaviour
             CheckerNodeScript.isStopSign = true;
             CheckerNodeScript.isPrioritySign = false;
         }
+        //Check which sign is triggering the collision
         if (other.gameObject.name == "Priority Sign")
         {
             other.transform.position = new Vector3(-15.89375f, -2.87f, -55.78f);

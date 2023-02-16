@@ -25,6 +25,7 @@ public class BikeMovement : MonoBehaviour
 
     public void MovePlayer()
     {
+        //Check if the joystick is moved
         if (input.axis.magnitude >= 0.1f)
         {
             Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(input.axis.x, 0, input.axis.y));

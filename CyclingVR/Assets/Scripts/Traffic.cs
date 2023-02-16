@@ -15,8 +15,9 @@ public class Traffic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        //Initial code for making objects look at their target node
         //direction = targetNode.transform.position - transform.position;
         //transform.LookAt(targetNode.transform.position);
         if (!targetNode.isStopSign)
@@ -24,24 +25,30 @@ public class Traffic : MonoBehaviour
             //transform.LookAt(targetPosition);
 
             //transform.position = Vector3.MoveTowards(transform.position, targetNode.transform.position, 5 * Time.deltaTime);
+
             Vector3 targetPosition = targetNode.transform.position;
-            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, 25 * Time.deltaTime));
+            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, 10 * Time.deltaTime));
             targetPosition.y = transform.position.y;
             Vector3 lookTargetDirection = (targetNode.transform.position - transform.position).normalized;
             Vector3 currentDirection = transform.forward;
             float dotProduct = Vector3.Dot(lookTargetDirection, currentDirection);
             float angle = Mathf.Acos(dotProduct) * Mathf.Rad2Deg;
 
+            //This makes sure the vehicles do not rotate more than they should, as without this they rotated forever 360 degrees
             if(Vector3.Dot(lookTargetDirection, transform.right) < 0)
                 angle = -angle;
+            //Rotation speed
+            transform.Rotate(0, angle * Time.deltaTime * 2.5f, 0);
 
-            transform.Rotate(0, angle * Time.deltaTime * 1.5f, 0);
+
             //if (lookTargetDirection.sqrMagnitude != 0)
             //{
             //    Quaternion lookDirection = Quaternion.LookRotation(lookTargetDirection, Vector3.up);
             //    transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, 0.01f);
             //}
         }
+        //This used to stop all vehicles in the game before, but I soon got rid of it because it is not realistic at all
+        //If there is suddenly a stop sign at the road, only the cars that see the stop sign should stop
         //if (targetNode.isStopSign)
         //{
 
